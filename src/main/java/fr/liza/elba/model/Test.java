@@ -8,9 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class Test {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	public String label;
 	public String re;
 
@@ -20,8 +20,19 @@ public class Test {
 		this.re = re;
 	}
 
+	public Test() {
+	}
+
 	public String getLabel() {
 		return label;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setLabel(String label) {
@@ -34,6 +45,12 @@ public class Test {
 
 	public void setRe(String re) {
 		this.re = re;
+	}
+
+	@Override
+	public String toString() {
+		return "Test [" + (id != null ? "id=" + id + ", " : "") + (label != null ? "label=" + label + ", " : "")
+				+ (re != null ? "re=" + re : "") + "]";
 	}
 
 }
