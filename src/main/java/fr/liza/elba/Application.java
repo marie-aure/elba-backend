@@ -25,7 +25,7 @@ public class Application implements CommandLineRunner {
     public void run(String... args) {
 
       
-        System.out.println("ça démarre"));
+        System.out.println("ça démarre");
         
 
     }
