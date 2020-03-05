@@ -7,12 +7,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.liza.elba.model.Test;
 import fr.liza.elba.repository.TestRepository;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 public class Application implements CommandLineRunner {
 
 	 @Autowired

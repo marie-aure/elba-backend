@@ -22,6 +22,8 @@ private TestRepository testRepo;
 	@GetMapping("/getAll")
 	@ResponseBody
 	public List<Test> getAllTest() {
+		Test test = new Test("test_1","re_1");
+		testRepo.save(test);
 		return testRepo.findAll();
 	}
 	
