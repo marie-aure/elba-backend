@@ -29,10 +29,14 @@ public class Test {
 	@OneToMany(mappedBy="manytoone", fetch=FetchType.EAGER)
 	private List<LiaisonTest> manytoonebis;
 	
-	public Test(String label, String re) {
+	public Test(String label, String re, LiaisonTest onetoonebis, LiaisonTest onetomanybis,
+			List<LiaisonTest> manytoonebis) {
 		super();
 		this.label = label;
 		this.re = re;
+		this.onetoonebis = onetoonebis;
+		this.onetomanybis = onetomanybis;
+		this.manytoonebis = manytoonebis;
 	}
 
 	public Test() {
@@ -65,7 +69,10 @@ public class Test {
 	@Override
 	public String toString() {
 		return "Test [" + (id != null ? "id=" + id + ", " : "") + (label != null ? "label=" + label + ", " : "")
-				+ (re != null ? "re=" + re : "") + "]";
+				+ (re != null ? "re=" + re + ", " : "")
+				+ (onetoonebis != null ? "onetoonebis=" + onetoonebis + ", " : "")
+				+ (onetomanybis != null ? "onetomanybis=" + onetomanybis + ", " : "")
+				+ (manytoonebis != null ? "manytoonebis=" + manytoonebis : "") + "]";
 	}
 
 }
