@@ -2,6 +2,7 @@ package fr.liza.elba.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,14 +22,14 @@ public class Test {
 	private String label;
 	private String re;
 
-	@OneToOne(mappedBy="onetoone")
+	@OneToOne(mappedBy="onetoone", cascade = CascadeType.ALL)
 	private LiaisonTest onetoonebis;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="onetomany_id", nullable=true)
 	private LiaisonTest onetomanybis;
 	
-	@OneToMany(mappedBy="manytoone", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="manytoone", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<LiaisonTest> manytoonebis;
 	
 	public Test(String label, String re) {
@@ -63,11 +64,40 @@ public class Test {
 	public void setRe(String re) {
 		this.re = re;
 	}
+	
+	
+
+	public LiaisonTest getOnetoonebis() {
+		return onetoonebis;
+	}
+
+	public void setOnetoonebis(LiaisonTest onetoonebis) {
+		this.onetoonebis = onetoonebis;
+	}
+
+	public LiaisonTest getOnetomanybis() {
+		return onetomanybis;
+	}
+
+	public void setOnetomanybis(LiaisonTest onetomanybis) {
+		this.onetomanybis = onetomanybis;
+	}
+
+	public List<LiaisonTest> getManytoonebis() {
+		return manytoonebis;
+	}
+
+	public void setManytoonebis(List<LiaisonTest> manytoonebis) {
+		this.manytoonebis = manytoonebis;
+	}
 
 	@Override
 	public String toString() {
 		return "Test [" + (id != null ? "id=" + id + ", " : "") + (label != null ? "label=" + label + ", " : "")
-				+ (re != null ? "re=" + re : "") + "]";
+				+ (re != null ? "re=" + re + ", " : "")
+				+ (onetoonebis != null ? "onetoonebis=" + onetoonebis + ", " : "")
+				+ (onetomanybis != null ? "onetomanybis=" + onetomanybis + ", " : "")
+				+ (manytoonebis != null ? "manytoonebis=" + manytoonebis : "") + "]";
 	}
 
 }
