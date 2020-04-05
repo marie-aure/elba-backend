@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.liza.elba.model.LiaisonTest;
+import fr.liza.elba.model.Test;
+
 
 public interface LiaisonTestRepository extends CrudRepository<LiaisonTest, Long>{
 
@@ -16,5 +18,5 @@ public interface LiaisonTestRepository extends CrudRepository<LiaisonTest, Long>
 	LiaisonTest save(LiaisonTest liaisonTest);
 	
 	void delete(LiaisonTest liaisonTest);
-	
+
 }

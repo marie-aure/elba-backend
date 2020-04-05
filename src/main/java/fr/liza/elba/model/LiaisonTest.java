@@ -2,6 +2,8 @@ package fr.liza.elba.model;
 
 import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,13 +20,13 @@ public class LiaisonTest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Test onetoone;
 
-	@OneToMany(mappedBy = "onetomanybis", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "onetomanybis", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Test> onetomany;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Test manytoone;
 
 	public LiaisonTest(Test onetoone, List<Test> onetomany, Test manytoone) {
@@ -76,5 +78,6 @@ public class LiaisonTest {
 				+ (onetomany != null ? "onetomany=" + onetomany + ", " : "")
 				+ (manytoone != null ? "manytoone=" + manytoone : "") + "]";
 	}
+
 
 }

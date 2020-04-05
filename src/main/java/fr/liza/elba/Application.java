@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.liza.elba.model.LiaisonTest;
@@ -16,10 +17,16 @@ import fr.liza.elba.repository.LiaisonTestRepository;
 import fr.liza.elba.repository.TestRepository;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 public class Application implements CommandLineRunner {
 
-	@Autowired
-	private TestRepository repository;
+
+	 @Autowired
+	    private TestRepository repository;
+
+	 @Autowired
+	    private LiaisonTestRepository lRepository;
+
 
 	@Autowired
 	private LiaisonTestRepository liaisonTestRepository;
@@ -71,6 +78,7 @@ public class Application implements CommandLineRunner {
         liste = repository.findAll();
         System.out.println(liste);
         
+
         System.out.println("Test create liaison1");
         List<Test> ltTests= new ArrayList<>();
         ltTests.add(test1);
@@ -80,6 +88,7 @@ public class Application implements CommandLineRunner {
         liaisonTest1 = liaisonTestRepository.save(liaisonTest1);
         System.out.println(liaisonTest1);
         System.out.println(test1);
+
     }
 
 }
