@@ -20,6 +20,7 @@ public class Test {
 	private String label;
 	private String re;
 
+
 	@OneToOne(mappedBy="onetoone")
 	private LiaisonTest onetoonebis;
 	
