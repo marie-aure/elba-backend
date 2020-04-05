@@ -22,7 +22,9 @@ public class Test {
 	private String label;
 	private String re;
 
+
 	@OneToOne(mappedBy="onetoone", cascade = CascadeType.ALL)
+
 	private LiaisonTest onetoonebis;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -32,10 +34,14 @@ public class Test {
 	@OneToMany(mappedBy="manytoone", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<LiaisonTest> manytoonebis;
 	
-	public Test(String label, String re) {
+	public Test(String label, String re, LiaisonTest onetoonebis, LiaisonTest onetomanybis,
+			List<LiaisonTest> manytoonebis) {
 		super();
 		this.label = label;
 		this.re = re;
+		this.onetoonebis = onetoonebis;
+		this.onetomanybis = onetomanybis;
+		this.manytoonebis = manytoonebis;
 	}
 
 	public Test() {

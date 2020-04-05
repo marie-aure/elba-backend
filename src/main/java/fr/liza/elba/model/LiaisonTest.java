@@ -2,6 +2,7 @@ package fr.liza.elba.model;
 
 import java.util.List;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +28,16 @@ public class LiaisonTest {
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Test manytoone;
+
+	public LiaisonTest(Test onetoone, List<Test> onetomany, Test manytoone) {
+		super();
+		this.onetoone = onetoone;
+		this.onetomany = onetomany;
+		this.manytoone = manytoone;
+	}
+
+	public LiaisonTest() {
+	}
 
 	public Long getId() {
 		return id;
@@ -60,14 +71,13 @@ public class LiaisonTest {
 		this.manytoone = manytoone;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "LiaisonTest [" + (id != null ? "id=" + id + ", " : "")
-//				+ (onetoone != null ? "onetoone=" + onetoone + ", " : "")
-//				+ (onetomany != null ? "onetomany=" + onetomany + ", " : "")
-//				+ (manytoone != null ? "manytoone=" + manytoone : "") + "]";
-//	}
-	
-	
+	@Override
+	public String toString() {
+		return "LiaisonTest [" + (id != null ? "id=" + id + ", " : "")
+				+ (onetoone != null ? "onetoone=" + onetoone + ", " : "")
+				+ (onetomany != null ? "onetomany=" + onetomany + ", " : "")
+				+ (manytoone != null ? "manytoone=" + manytoone : "") + "]";
+	}
+
 
 }
