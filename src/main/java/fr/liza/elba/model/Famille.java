@@ -24,13 +24,11 @@ public class Famille {
 	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
 	private Sim chef;
 
-	@OneToMany(mappedBy = "famille", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "famille", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.LAZY)
 	private List<Sim> lMembres;
 
-	@OneToMany(mappedBy = "familleOrigine", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "familleOrigine", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.LAZY)
 	private List<Sim> lMembresOrigine;
-
-
 
 	public Famille() {
 		super();

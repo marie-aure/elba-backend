@@ -8,8 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.liza.elba.model.Famille;
 import fr.liza.elba.model.Sim;
+import fr.liza.elba.model.Tour;
 import fr.liza.elba.repository.FamilleRepository;
 import fr.liza.elba.repository.SimRepository;
+import fr.liza.elba.repository.TourRepository;
 
 @SpringBootApplication
 @EnableAutoConfiguration
@@ -20,6 +22,9 @@ public class Application implements CommandLineRunner {
 	
 	@Autowired
 	private SimRepository sRepo;
+	
+	@Autowired
+	private TourRepository tRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -36,6 +41,8 @@ public class Application implements CommandLineRunner {
        Famille famille = new Famille("aa", 1, 0, sim, null, null);
        famille = repository.save(famille);
        
+       Tour tour = new Tour(false, 0, 0, famille);
+       tour = tRepo.save(tour);
 
     }
 
