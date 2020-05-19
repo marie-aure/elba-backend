@@ -11,6 +11,8 @@ public interface TourRepository extends CrudRepository<Tour, Long>{
 	
 	Optional<Tour> findById(Long id);
 	
+	Tour findByEnCours(boolean enCours);
+	
 	Tour save(Tour tour);
 	
 	void delete(Tour tour);

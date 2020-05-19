@@ -2,8 +2,10 @@ package fr.liza.elba.service;
 
 import org.springframework.stereotype.Service;
 
-@Service(value="tourService")
-public class TourService {
+import fr.liza.elba.model.Tour;
+
+public interface TourService {
 	
-	
+	public Tour getTourEnCours();
+
 }
