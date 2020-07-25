@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -21,21 +22,25 @@ public class Famille {
 	private int generation;
 	private int argentIG;
 
-	@OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	private Sim chef;
 
-	@OneToMany(mappedBy = "famille", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "famille", cascade = { CascadeType.MERGE, CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	private List<Sim> lMembres;
 
-	@OneToMany(mappedBy = "familleOrigine", cascade = {CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "familleOrigine", cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	private List<Sim> lMembresOrigine;
+
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+	private Classe classe;
 
 	public Famille() {
 		super();
 	}
 
-	public Famille(String nom, int generation, int argentIG, Sim chef, List<Sim> lMembres,
-			List<Sim> lMembresOrigine) {
+	public Famille(String nom, int generation, int argentIG, Sim chef, List<Sim> lMembres, List<Sim> lMembresOrigine,
+			Classe classe) {
 		super();
 		this.nom = nom;
 		this.generation = generation;
@@ -43,6 +48,7 @@ public class Famille {
 		this.chef = chef;
 		this.lMembres = lMembres;
 		this.lMembresOrigine = lMembresOrigine;
+		this.classe = classe;
 	}
 
 	public long getId() {
@@ -99,6 +105,14 @@ public class Famille {
 
 	public void setlMembresOrigine(List<Sim> lMembresOrigine) {
 		this.lMembresOrigine = lMembresOrigine;
+	}
+
+	public Classe getClasse() {
+		return classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
 	}
 
 }

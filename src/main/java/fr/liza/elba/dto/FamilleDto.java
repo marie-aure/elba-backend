@@ -10,6 +10,7 @@ public class FamilleDto {
 	private String nom;
 	private int generation;
 	private int argentIG;
+	private String classe;
 	private SimFamilleDto chef;
 	private List<SimFamilleDto> lMembers;
 	private List<SimFamilleDto> lMembersOrigine;
@@ -60,6 +61,14 @@ public class FamilleDto {
 
 	public void setChef(SimFamilleDto chef) {
 		this.chef = chef;
+	}
+
+	public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String classe) {
+		this.classe = classe;
 	}
 
 	public List<SimFamilleDto> getlMembers() {

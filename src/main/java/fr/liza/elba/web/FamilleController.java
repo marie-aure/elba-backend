@@ -34,6 +34,9 @@ public class FamilleController {
 			for (Famille famille : lFamilles) {
 				FamilleDto familleDto = new FamilleDto(famille.getId(), famille.getNom(), famille.getGeneration(),
 						famille.getArgentIG());
+				if (famille.getClasse() != null) {
+					familleDto.setClasse(famille.getClasse().getLibelle());
+				}
 				if (famille.getChef() != null) {
 					SimFamilleDto chef = new SimFamilleDto(famille.getChef().getPrenom(), famille.getChef().getNom());
 					familleDto.setChef(chef);
