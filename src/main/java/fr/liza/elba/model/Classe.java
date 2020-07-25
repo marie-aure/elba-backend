@@ -26,7 +26,16 @@ public class Classe {
 			CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	private List<Famille> lFamilles;
 	
-	
+	public Classe() {
+	}
+
+	public Classe(long id, String libelle, Classe classeSup, List<Famille> lFamilles) {
+		this.id = id;
+		this.libelle = libelle;
+		this.classeSup = classeSup;
+		this.lFamilles = lFamilles;
+	}
+
 	public Classe(long id, String libelle) {
 		super();
 		this.id = id;

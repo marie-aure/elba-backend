@@ -30,7 +30,7 @@ public class TourController {
 			FamilleDto familleDto = new FamilleDto(
 			tour.getFamille().getId(), tour.getFamille().getNom(), tour.getFamille().getGeneration(),
 					tour.getFamille().getArgentIG());
-
+			familleDto.setClasse(tour.getFamille().getClasse().getLibelle());
 			if (tour.getFamille().getChef() != null) {
 				SimFamilleDto chef = new SimFamilleDto(tour.getFamille().getChef().getPrenom(), tour.getFamille().getChef().getNom());
 				if (tour.getFamille().getChef().getCouple() != null) {
