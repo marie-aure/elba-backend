@@ -1,8 +1,11 @@
 package fr.liza.elba.web;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.liza.elba.dto.FamilleDto;
 import fr.liza.elba.dto.SimFamilleDto;
 import fr.liza.elba.dto.TourDto;
+import fr.liza.elba.model.Famille;
 import fr.liza.elba.model.Tour;
+import fr.liza.elba.repository.FamilleRepository;
+import fr.liza.elba.repository.TourRepository;
 import fr.liza.elba.service.TourService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,7 +30,7 @@ public class TourController {
 	@GetMapping("/getTourEnCours")
 	@ResponseBody
 	public TourDto getTourEnCours() {
-		Tour tour = tourService.getTourEnCours();
+	Tour tour = tourService.getTourEnCours();
 		TourDto enCours = new TourDto(tour.getNb(), tour.getSemaine());
 		if (tour != null && tour.getFamille() != null) {
 			FamilleDto familleDto = new FamilleDto(
@@ -45,6 +51,14 @@ public class TourController {
 			enCours.setFamille(familleDto);
 		}
 		return enCours;
+	}
+
+	@GetMapping("/endTourEnCours/{argentIG}")
+	@ResponseBody
+	public void endTourEnCours(@PathVariable(value="argentIG") Integer argentIG) {
+
+		
+		tourService.tourSuivant(argentIG);		
 	}
 
 }
