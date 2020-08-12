@@ -32,6 +32,14 @@ public class Famille {
 			CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	private List<Sim> lMembresOrigine;
 
+	@OneToMany(mappedBy = "famille", cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	private List<Pret> lPrets;
+	
+	@OneToMany(mappedBy = "famille", cascade = { CascadeType.MERGE,
+			CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	private List<Pret> lComptes;
+	
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	private Classe classe;
 
@@ -114,5 +122,23 @@ public class Famille {
 	public void setClasse(Classe classe) {
 		this.classe = classe;
 	}
+
+	public List<Pret> getlPrets() {
+		return lPrets;
+	}
+
+	public void setlPrets(List<Pret> lPrets) {
+		this.lPrets = lPrets;
+	}
+
+	public List<Pret> getlComptes() {
+		return lComptes;
+	}
+
+	public void setlComptes(List<Pret> lComptes) {
+		this.lComptes = lComptes;
+	}
+	
+	
 
 }
