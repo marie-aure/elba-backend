@@ -1,6 +1,7 @@
 package fr.liza.elba.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class FamilleServiceImpl implements FamilleService {
 	@Override
 	public List<Famille> getAll() {
 		return familleRepository.findAll();
+	}
+
+	@Override
+	public Optional<Famille> getById(long id) {
+		return familleRepository.findById(id);
 	}
 
 }
